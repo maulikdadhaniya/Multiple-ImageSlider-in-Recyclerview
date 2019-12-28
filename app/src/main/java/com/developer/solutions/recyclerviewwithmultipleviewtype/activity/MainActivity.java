@@ -10,7 +10,7 @@ import android.support.v7.widget.Toolbar;
 
 import com.developer.solutions.recyclerviewwithmultipleviewtype.R;
 import com.developer.solutions.recyclerviewwithmultipleviewtype.adapter.MultiViewTypeAdapter;
-import com.developer.solutions.recyclerviewwithmultipleviewtype.model.Data;
+import com.developer.solutions.recyclerviewwithmultipleviewtype.model.MyModel;
 
 import java.util.ArrayList;
 
@@ -30,6 +30,9 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.rv)
     RecyclerView mRecyclerView;
     Unbinder mUnbinder;
+    ArrayList<String> pos1;
+    ArrayList<String> pos2;
+    ArrayList<String> pos3;
 
 
     @Override
@@ -39,11 +42,24 @@ public class MainActivity extends AppCompatActivity {
         //((TextView) findViewById(R.id.tv)).setText("Welcome user");
         mUnbinder = ButterKnife.bind(this);
 
-        ArrayList<Data> list = new ArrayList<>();
-        list.add(new Data(Data.VIEW_PAGER, "Hello. This is the View Pager view type with images", 0));
-        list.add(new Data(Data.VIEW_PAGER, "A view type with Image and Textview", 0));
-        list.add(new Data(Data.VIEW_PAGER, "A view type with Image and Textview", 0));
-        list.add(new Data(Data.VIEW_PAGER, "A view type with Image and Textview", 0));
+        pos1 = new ArrayList<>();
+        pos1.add(0, "http://cdn.collider.com/wp-content/uploads/avengers-movie-banner-scarlett-johansson-jeremy-renner.jpg");
+        pos1.add(1, "http://www.officialterridwyer.com/wp-content/uploads/2015/04/Disneys-Cinderella-2015-Movie-Banner.jpg");
+
+
+        pos2 = new ArrayList<>();
+        pos2.add(0, "http://igmedia.blob.core.windows.net/igmedia/hindi/gallery/movies/raabta/main1.jpg");
+        pos2.add(1, "http://fantoosy.com/wp-content/uploads/2015/11/tamasha.jpg");
+
+
+        pos3 = new ArrayList<>();
+        pos3.add(0, "http://www.officialterridwyer.com/wp-content/uploads/2015/04/Disneys-Cinderella-2015-Movie-Banner.jpg");
+
+
+        ArrayList<MyModel> list = new ArrayList<>();
+        list.add(new MyModel(1, "Hello", pos1));
+        list.add(new MyModel(2, "Hello2", pos2));
+        list.add(new MyModel(3, "Hello3", pos3));
 
 
         MultiViewTypeAdapter adapter = new MultiViewTypeAdapter(list, this);
